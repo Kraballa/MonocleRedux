@@ -8,20 +8,8 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 
-
-	<ItemGroup>
-		<None Include="Content\**\*.*">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
-
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\..\Documents\Sources\Lib\FNA\FNA.Core.csproj" />
 		<ProjectReference Include="..\MonocleRedux\Monocle Redux.csproj" />
 	</ItemGroup>
-
-	<ItemGroup>
-		<Folder Include="Content\" />
-	</ItemGroup>
-
 </Project>

@@ -7,7 +7,7 @@ namespace Demo
         [STAThread]
         public static void Main(string[] args)
         {
-            using (var core = new Core(1280, 920, 1280, 920, "Monocle Redux Demo", false))
+            using (var core = new Core())
             {
                 core.Run();
             }

@@ -89,7 +89,6 @@ namespace Monocle
             Graphics.GraphicsProfile = GraphicsProfile.HiDef;
             Graphics.PreferredBackBufferFormat = SurfaceFormat.Color;
             Graphics.PreferredDepthStencilFormat = DepthFormat.Depth24Stencil8;
-            Graphics.ApplyChanges();
 
 #if PS4 || XBOXONE
             Graphics.PreferredBackBufferWidth = 1920;
@@ -114,6 +113,7 @@ namespace Monocle
                 Graphics.IsFullScreen = false;
             }
 #endif
+            Graphics.ApplyChanges();
 
             Content.RootDirectory = @"Content";
 
@@ -184,7 +184,6 @@ namespace Monocle
             Tracker.Initialize();
             Pooler = new Monocle.Pooler();
             Commands = new Commands();
-            Graphics.ApplyChanges();
         }
 
         protected override void LoadContent()
