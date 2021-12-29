@@ -23,13 +23,13 @@ namespace Monocle
 
         public override void Render(Scene scene)
         {
-            Monocle.Render.SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState, SamplerState, DepthStencilState.None, RasterizerState.CullNone, Effect, Camera.Matrix * Engine.ScreenMatrix);
+            Monocle.Draw.SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState, SamplerState, DepthStencilState.None, RasterizerState.CullNone, Effect, Camera.Matrix * Engine.ScreenMatrix);
 
             scene.Entities.Render();
             if (Engine.Commands.Open)
                 scene.Entities.DebugRender(Camera);
 
-            Monocle.Render.SpriteBatch.End();
+            Monocle.Draw.SpriteBatch.End();
         }
 
         public override void AfterRender(Scene scene)

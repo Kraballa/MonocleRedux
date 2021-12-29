@@ -57,7 +57,7 @@ namespace Monocle
 
         public override void Render(Camera camera, Color color)
         {
-            Monocle.Render.Circle(AbsolutePosition, Radius, color, 4);
+            Monocle.Draw.Circle(AbsolutePosition, Radius, color, 4);
         }
 
         /*

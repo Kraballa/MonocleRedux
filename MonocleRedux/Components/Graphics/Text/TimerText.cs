@@ -82,7 +82,7 @@ namespace Monocle
 
         public override void Render()
         {
-            Monocle.Render.SpriteBatch.DrawString(font, Text, RenderPosition, Color, Rotation, Origin, Scale, Effects, 0);
+            Monocle.Draw.SpriteBatch.DrawString(font, Text, RenderPosition, Color, Rotation, Origin, Scale, Effects, 0);
         }
 
         public SpriteFont Font

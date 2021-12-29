@@ -25,7 +25,7 @@ namespace Monocle
 
         public override void Render(Scene scene)
         {
-            Monocle.Render.SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState, SamplerState, DepthStencilState.None, RasterizerState.CullNone, Effect, Camera.Matrix * Engine.ScreenMatrix);
+            Monocle.Draw.SpriteBatch.Begin(SpriteSortMode.Deferred, BlendState, SamplerState, DepthStencilState.None, RasterizerState.CullNone, Effect, Camera.Matrix * Engine.ScreenMatrix);
 
             foreach (var entity in scene[Tag])
                 if (entity.Visible)
@@ -35,7 +35,7 @@ namespace Monocle
                 foreach (var entity in scene[Tag])
                     entity.DebugRender(Camera);
 
-            Monocle.Render.SpriteBatch.End();
+            Monocle.Draw.SpriteBatch.End();
         }
 
         public override void AfterRender(Scene scene)

@@ -70,7 +70,7 @@ namespace Monocle
 
         public override void Render(Camera camera, Color color)
         {
-            Monocle.Render.HollowRect(AbsoluteX, AbsoluteY, Width, Height, color);
+            Monocle.Draw.HollowRect(AbsoluteX, AbsoluteY, Width, Height, color);
         }
 
         public void SetFromRectangle(Rectangle rect)

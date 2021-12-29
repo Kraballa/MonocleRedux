@@ -118,7 +118,7 @@ namespace Monocle
             else if (Source != null)
                 particle.Source = Source;
             else
-                particle.Source = Render.Particle; 
+                particle.Source = Draw.Particle; 
                  
             // size
             if (SizeRange != 0)

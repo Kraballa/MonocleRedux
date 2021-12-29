@@ -4,7 +4,7 @@ using System;
 
 namespace Monocle
 {
-    public static class Render
+    public static class Draw
     {
         /// <summary>
         /// The currently-rendering Renderer
@@ -111,10 +111,10 @@ namespace Monocle
                 Vector2 at = Calc.AngleToVector(i * MathHelper.PiOver2 / resolution, radius);
                 Vector2 atP = at.Perpendicular();
 
-                Render.Line(position + last, position + at, color);
-                Render.Line(position - last, position - at, color);
-                Render.Line(position + lastP, position + atP, color);
-                Render.Line(position - lastP, position - atP, color);
+                Draw.Line(position + last, position + at, color);
+                Draw.Line(position - last, position - at, color);
+                Draw.Line(position + lastP, position + atP, color);
+                Draw.Line(position - lastP, position - atP, color);
 
                 last = at;
                 lastP = atP;
@@ -135,10 +135,10 @@ namespace Monocle
                 Vector2 at = Calc.AngleToVector(i * MathHelper.PiOver2 / resolution, radius);
                 Vector2 atP = at.Perpendicular();
 
-                Render.Line(position + last, position + at, color, thickness);
-                Render.Line(position - last, position - at, color, thickness);
-                Render.Line(position + lastP, position + atP, color, thickness);
-                Render.Line(position - lastP, position - atP, color, thickness);
+                Draw.Line(position + last, position + at, color, thickness);
+                Draw.Line(position - last, position - at, color, thickness);
+                Draw.Line(position + lastP, position + atP, color, thickness);
+                Draw.Line(position - lastP, position - atP, color, thickness);
 
                 last = at;
                 lastP = atP;
@@ -170,7 +170,7 @@ namespace Monocle
 
         public static void Rect(Rectangle rect, Color color)
         {
-            Render.rect = rect;
+            Draw.rect = rect;
             SpriteBatch.Draw(Pixel.Texture, rect, Pixel.ClipRect, color);
         }
 
@@ -228,12 +228,12 @@ namespace Monocle
 
         public static void Text(SpriteFont font, string text, Vector2 position, Color color)
         {
-            Render.SpriteBatch.DrawString(font, text, Calc.Floor(position), color);
+            Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position), color);
         }
 
         public static void Text(SpriteFont font, string text, Vector2 position, Color color, Vector2 origin, Vector2 scale, float rotation)
         {
-            Render.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, rotation, origin, scale, SpriteEffects.None, 0);
+            Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, rotation, origin, scale, SpriteEffects.None, 0);
         }
 
         public static void TextJustified(SpriteFont font, string text, Vector2 position, Color color, Vector2 justify)
@@ -242,7 +242,7 @@ namespace Monocle
             origin.X *= justify.X;
             origin.Y *= justify.Y;
 
-            Render.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, 1, SpriteEffects.None, 0);
+            Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, 1, SpriteEffects.None, 0);
         }
 
         public static void TextJustified(SpriteFont font, string text, Vector2 position, Color color, float scale, Vector2 justify)
@@ -250,7 +250,7 @@ namespace Monocle
             Vector2 origin = font.MeasureString(text);
             origin.X *= justify.X;
             origin.Y *= justify.Y;
-            Render.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, scale, SpriteEffects.None, 0);
+            Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, scale, SpriteEffects.None, 0);
         }
 
         public static void TextCentered(SpriteFont font, string text, Vector2 position)
@@ -280,8 +280,8 @@ namespace Monocle
             for (int i = -1; i < 2; i++)
                 for (int j = -1; j < 2; j++)
                     if (i != 0 || j != 0)
-                        Render.SpriteBatch.DrawString(font, text, Calc.Floor(position) + new Vector2(i, j), Color.Black, 0, origin, scale, SpriteEffects.None, 0);
-            Render.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, scale, SpriteEffects.None, 0);
+                        Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position) + new Vector2(i, j), Color.Black, 0, origin, scale, SpriteEffects.None, 0);
+            Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, scale, SpriteEffects.None, 0);
         }
 
         public static void OutlineTextCentered(SpriteFont font, string text, Vector2 position, Color color, Color outlineColor)
@@ -291,8 +291,8 @@ namespace Monocle
             for (int i = -1; i < 2; i++)
                 for (int j = -1; j < 2; j++)
                     if (i != 0 || j != 0)
-                        Render.SpriteBatch.DrawString(font, text, Calc.Floor(position) + new Vector2(i, j), outlineColor, 0, origin, 1, SpriteEffects.None, 0);
-            Render.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, 1, SpriteEffects.None, 0);
+                        Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position) + new Vector2(i, j), outlineColor, 0, origin, 1, SpriteEffects.None, 0);
+            Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, 1, SpriteEffects.None, 0);
         }
 
         public static void OutlineTextCentered(SpriteFont font, string text, Vector2 position, Color color, Color outlineColor, float scale)
@@ -302,8 +302,8 @@ namespace Monocle
             for (int i = -1; i < 2; i++)
                 for (int j = -1; j < 2; j++)
                     if (i != 0 || j != 0)
-                        Render.SpriteBatch.DrawString(font, text, Calc.Floor(position) + new Vector2(i, j), outlineColor, 0, origin, scale, SpriteEffects.None, 0);
-            Render.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, scale, SpriteEffects.None, 0);
+                        Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position) + new Vector2(i, j), outlineColor, 0, origin, scale, SpriteEffects.None, 0);
+            Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, scale, SpriteEffects.None, 0);
         }
 
         public static void OutlineTextJustify(SpriteFont font, string text, Vector2 position, Color color, Color outlineColor, Vector2 justify)
@@ -313,8 +313,8 @@ namespace Monocle
             for (int i = -1; i < 2; i++)
                 for (int j = -1; j < 2; j++)
                     if (i != 0 || j != 0)
-                        Render.SpriteBatch.DrawString(font, text, Calc.Floor(position) + new Vector2(i, j), outlineColor, 0, origin, 1, SpriteEffects.None, 0);
-            Render.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, 1, SpriteEffects.None, 0);
+                        Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position) + new Vector2(i, j), outlineColor, 0, origin, 1, SpriteEffects.None, 0);
+            Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, 1, SpriteEffects.None, 0);
         }
 
         public static void OutlineTextJustify(SpriteFont font, string text, Vector2 position, Color color, Color outlineColor, Vector2 justify, float scale)
@@ -324,8 +324,8 @@ namespace Monocle
             for (int i = -1; i < 2; i++)
                 for (int j = -1; j < 2; j++)
                     if (i != 0 || j != 0)
-                        Render.SpriteBatch.DrawString(font, text, Calc.Floor(position) + new Vector2(i, j), outlineColor, 0, origin, scale, SpriteEffects.None, 0);
-            Render.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, scale, SpriteEffects.None, 0);
+                        Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position) + new Vector2(i, j), outlineColor, 0, origin, scale, SpriteEffects.None, 0);
+            Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, scale, SpriteEffects.None, 0);
         }
 
         #endregion
@@ -342,7 +342,7 @@ namespace Monocle
             while (clip.X < tex.ClipRect.X + tex.ClipRect.Width)
             {
                 Vector2 add = new Vector2(sliceSize * num, (float)Math.Round(Math.Sin(sineCounter + sliceAdd * num) * amplitude));
-                Render.SpriteBatch.Draw(tex.Texture, position, clip, color, rotation, origin - add, scale, effects, 0);
+                Draw.SpriteBatch.Draw(tex.Texture, position, clip, color, rotation, origin - add, scale, effects, 0);
 
                 num++;
                 clip.X += sliceSize;
@@ -360,7 +360,7 @@ namespace Monocle
             while (clip.Y < tex.ClipRect.Y + tex.ClipRect.Height)
             {
                 Vector2 add = new Vector2((float)Math.Round(Math.Sin(sineCounter + sliceAdd * num) * amplitude), sliceSize * num);
-                Render.SpriteBatch.Draw(tex.Texture, position, clip, color, rotation, origin - add, scale, effects, 0);
+                Draw.SpriteBatch.Draw(tex.Texture, position, clip, color, rotation, origin - add, scale, effects, 0);
 
                 num++;
                 clip.Y += sliceSize;
@@ -382,7 +382,7 @@ namespace Monocle
                 clip.Height = Math.Min(sliceSize, tex.ClipRect.Y + tex.ClipRect.Height - clip.Y);
 
                 Vector2 add = new Vector2((float)Math.Round(Math.Sin(sineCounter + sliceAdd * num) * amplitude * fade), clip.Y - tex.ClipRect.Y);
-                Render.SpriteBatch.Draw(tex.Texture, position, clip, color, rotation, origin - add, scale, effects, 0);
+                Draw.SpriteBatch.Draw(tex.Texture, position, clip, color, rotation, origin - add, scale, effects, 0);
 
                 num++;
                 clip.Y += clip.Height;

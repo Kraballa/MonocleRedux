@@ -54,7 +54,7 @@ namespace Monocle
 
         public override void Render()
         {
-            Monocle.Render.SpriteBatch.DrawString(font, drawString, RenderPosition, Color, Rotation, Origin, Scale, Effects, 0);
+            Monocle.Draw.SpriteBatch.DrawString(font, drawString, RenderPosition, Color, Rotation, Origin, Scale, Effects, 0);
         }
 
         public float Width

@@ -109,7 +109,7 @@ namespace Monocle
 
         public override void Render()
         {
-            Monocle.Render.SpriteBatch.DrawString(font, text, RenderPosition, Color, Rotation, Origin, Scale, Effects, 0);
+            Monocle.Draw.SpriteBatch.DrawString(font, text, RenderPosition, Color, Rotation, Origin, Scale, Effects, 0);
         }
     }
 }

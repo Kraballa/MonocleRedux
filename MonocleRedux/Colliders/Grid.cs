@@ -352,7 +352,7 @@ namespace Monocle
                 for (int i = 0; i < CellsX; i++)
                     for (int j = 0; j < CellsY; j++)
                         if (Data[i, j])
-                            Monocle.Render.HollowRect(AbsoluteLeft + i * CellWidth, AbsoluteTop + j * CellHeight, CellWidth, CellHeight, color);
+                            Monocle.Draw.HollowRect(AbsoluteLeft + i * CellWidth, AbsoluteTop + j * CellHeight, CellWidth, CellHeight, color);
             }
             else
             {
@@ -364,7 +364,7 @@ namespace Monocle
                 for (int tx = left; tx <= right; tx++)
                     for (int ty = top; ty <= bottom; ty++)
                         if (Data[tx, ty])
-                            Monocle.Render.HollowRect(AbsoluteLeft + tx * CellWidth, AbsoluteTop + ty * CellHeight, CellWidth, CellHeight, color);
+                            Monocle.Draw.HollowRect(AbsoluteLeft + tx * CellWidth, AbsoluteTop + ty * CellHeight, CellWidth, CellHeight, color);
             }
         }
 

@@ -124,7 +124,7 @@ namespace Monocle
             if (Track != null)
                 renderAt += Track.Position;
 
-            Monocle.Render.SpriteBatch.Draw(Source.Texture, renderAt, Source.ClipRect, Color, Rotation, Source.Center, Size, SpriteEffects.None, 0);
+            Monocle.Draw.SpriteBatch.Draw(Source.Texture, renderAt, Source.ClipRect, Color, Rotation, Source.Center, Size, SpriteEffects.None, 0);
         }
 
         public void Render(float alpha)
@@ -133,7 +133,7 @@ namespace Monocle
             if (Track != null)
                 renderAt += Track.Position;
 
-            Monocle.Render.SpriteBatch.Draw(Source.Texture, renderAt, Source.ClipRect, Color * alpha, Rotation, Source.Center, Size, SpriteEffects.None, 0);
+            Monocle.Draw.SpriteBatch.Draw(Source.Texture, renderAt, Source.ClipRect, Color * alpha, Rotation, Source.Center, Size, SpriteEffects.None, 0);
         }
     }
 }

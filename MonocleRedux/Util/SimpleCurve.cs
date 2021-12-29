@@ -49,7 +49,7 @@ namespace Monocle
             for (int i = 1; i <= resolution; i++)
             {
                 Vector2 at = offset + GetPoint(i / (float)resolution);
-                Monocle.Render.Line(last, at, color);
+                Monocle.Draw.Line(last, at, color);
                 last = at;
             }
         }
@@ -60,7 +60,7 @@ namespace Monocle
             for (int i = 1; i <= resolution; i++)
             {
                 Vector2 at = offset + GetPoint(i / (float)resolution);
-                Monocle.Render.Line(last, at, color, thickness);
+                Monocle.Draw.Line(last, at, color, thickness);
                 last = at;
             }
         }

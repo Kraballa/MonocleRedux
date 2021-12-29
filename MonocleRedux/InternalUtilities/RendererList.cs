@@ -46,7 +46,7 @@ namespace Monocle
             {
                 if (!Renderers[i].Visible)
                     continue;
-                Monocle.Render.Renderer = Renderers[i];
+                Monocle.Draw.Renderer = Renderers[i];
                 Renderers[i].BeforeRender(scene);
             }
         }
@@ -57,7 +57,7 @@ namespace Monocle
             {
                 if (!Renderers[i].Visible)
                     continue;
-                Monocle.Render.Renderer = Renderers[i];
+                Monocle.Draw.Renderer = Renderers[i];
                 Renderers[i].Render(scene);
             }
         }
@@ -68,7 +68,7 @@ namespace Monocle
             {
                 if (!Renderers[i].Visible)
                     continue;
-                Monocle.Render.Renderer = Renderers[i];
+                Monocle.Draw.Renderer = Renderers[i];
                 Renderers[i].AfterRender(scene);
             }
         }

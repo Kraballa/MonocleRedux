@@ -191,7 +191,7 @@ namespace Monocle
         {
             base.LoadContent();
 
-            Monocle.Render.Initialize(GraphicsDevice);
+            Monocle.Draw.Initialize(GraphicsDevice);
         }
 
         protected override void Update(GameTime gameTime)

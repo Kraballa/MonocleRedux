@@ -62,14 +62,14 @@ namespace Monocle
 
             //Split the string if you overlow horizontally
             int maxWidth = Engine.Instance.Window.ClientBounds.Width - 40;
-            while (Monocle.Render.DefaultFont.MeasureString(str).X > maxWidth)
+            while (Monocle.Draw.DefaultFont.MeasureString(str).X > maxWidth)
             {
                 int split = -1;
                 for (int i = 0; i < str.Length; i++)
                 {
                     if (str[i] == ' ')
                     {
-                        if (Monocle.Render.DefaultFont.MeasureString(str.Substring(0, i)).X <= maxWidth)
+                        if (Monocle.Draw.DefaultFont.MeasureString(str.Substring(0, i)).X <= maxWidth)
                             split = i;
                         else
                             break;
@@ -423,23 +423,26 @@ namespace Monocle
             int screenWidth = Engine.ViewWidth;
             int screenHeight = Engine.ViewHeight;
 
-            Monocle.Render.SpriteBatch.Begin();
+            Monocle.Draw.SpriteBatch.Begin();
 
-            Monocle.Render.Rect(10, screenHeight - 50, screenWidth - 20, 40, Color.Black * OPACITY);
+            Monocle.Draw.Rect(10, screenHeight - 50, screenWidth - 20, 40, Color.Black * OPACITY);
             if (underscore)
-                Monocle.Render.SpriteBatch.DrawString(Monocle.Render.DefaultFont, ">" + currentText + "_", new Vector2(20, screenHeight - 42), Color.White);
+                Draw.DefaultFont.DrawString(">" + currentText + "_", new Vector2(20, screenHeight - 42));
+            //Monocle.Draw.SpriteBatch.DrawString(Monocle.Draw.DefaultFont, ">" + currentText + "_", new Vector2(20, screenHeight - 42), Color.White);
             else
-                Monocle.Render.SpriteBatch.DrawString(Monocle.Render.DefaultFont, ">" + currentText, new Vector2(20, screenHeight - 42), Color.White);
+                Draw.DefaultFont.DrawString(">" + currentText, new Vector2(20, screenHeight - 42));
+            //Monocle.Draw.SpriteBatch.DrawString(Monocle.Draw.DefaultFont, ">" + currentText, new Vector2(20, screenHeight - 42), Color.White);
 
             if (drawCommands.Count > 0)
             {
                 int height = 10 + (30 * drawCommands.Count);
-                Monocle.Render.Rect(10, screenHeight - height - 60, screenWidth - 20, height, Color.Black * OPACITY);
+                Monocle.Draw.Rect(10, screenHeight - height - 60, screenWidth - 20, height, Color.Black * OPACITY);
                 for (int i = 0; i < drawCommands.Count; i++)
-                    Monocle.Render.SpriteBatch.DrawString(Monocle.Render.DefaultFont, drawCommands[i].Text, new Vector2(20, screenHeight - 92 - (30 * i)), drawCommands[i].Color);
+                    Draw.DefaultFont.DrawString(drawCommands[i].Text, new Vector2(20, screenHeight - 92 - (30 * i)));
+                //Monocle.Draw.SpriteBatch.DrawString(Monocle.Draw.DefaultFont, drawCommands[i].Text, new Vector2(20, screenHeight - 92 - (30 * i)), drawCommands[i].Color);
             }
 
-            Monocle.Render.SpriteBatch.End();
+            Monocle.Draw.SpriteBatch.End();
         }
 
         #endregion
@@ -500,14 +503,14 @@ namespace Monocle
                 else
                 {
                     CommandInfo info = new CommandInfo();
-                    info.Help = attr.Help;  
+                    info.Help = attr.Help;
 
                     var parameters = method.GetParameters();
-                    var defaults = new object[parameters.Length];                 
+                    var defaults = new object[parameters.Length];
                     string[] usage = new string[parameters.Length];
-                    
+
                     for (int i = 0; i < parameters.Length; i++)
-                    {                       
+                    {
                         var p = parameters[i];
                         usage[i] = p.Name + ":";
 
@@ -619,7 +622,7 @@ namespace Monocle
 
         private struct CommandInfo
         {
-            public Action<string[]> Action;         
+            public Action<string[]> Action;
             public string Help;
             public string Usage;
         }
@@ -791,7 +794,7 @@ namespace Monocle
                     str.Append(c.Usage);
                 }
                 Engine.Commands.Log(str.ToString());
-               
+
                 //Help
                 if (string.IsNullOrEmpty(c.Help))
                     Engine.Commands.Log("No help info set");
