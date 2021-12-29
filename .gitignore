@@ -1,0 +1,9 @@
+﻿################################################################################
+# Diese .gitignore-Datei wurde von Microsoft(R) Visual Studio automatisch erstellt.
+################################################################################
+
+/Monocle Demo/bin/Debug/net6.0
+/.vs/MonocleRedux
+/Monocle Demo/obj
+/MonocleRedux/bin/Debug/net6.0
+/MonocleRedux/obj
