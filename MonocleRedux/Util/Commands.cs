@@ -705,7 +705,14 @@ namespace Monocle
         [Command("framerate", "Sets the target framerate")]
         private static void Framerate(float target)
         {
-            Engine.Instance.TargetElapsedTime = TimeSpan.FromSeconds(1.0 / target);
+            if (target > 0)
+            {
+                Engine.Instance.TargetElapsedTime = TimeSpan.FromSeconds(1.0 / target);
+            }
+            else
+            {
+                Engine.Commands.Log("Framerate target of " + target + " is invalid!");
+            }
         }
 
         [Command("count", "Logs amount of Entities in the Scene. Pass a tagIndex to count only Entities with that tag")]

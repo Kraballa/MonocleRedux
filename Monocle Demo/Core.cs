@@ -15,8 +15,11 @@ namespace Demo
         public Core() : base(320, 180, 1280, 720, "Monocle Redux Demo", false)
         {
             ClearColor = Color.Black;
-            Scene = new DemoScene();
+
             IsMouseVisible = true;
+            ExitOnEscapeKeypress = false;
+
+            Scene = new DemoScene();
         }
 
         protected override void Initialize()
