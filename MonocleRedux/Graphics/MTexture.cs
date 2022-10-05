@@ -9,9 +9,9 @@ namespace Monocle
 {
     public class MTexture
     {
-        static public MTexture FromFile(string filename)
+        static public MTexture FromFile(params string[] path)
         {
-            var fileStream = new FileStream(filename, FileMode.Open, FileAccess.Read);
+            var fileStream = new FileStream(Path.Join(path), FileMode.Open, FileAccess.Read);
             var texture = Texture2D.FromStream(Engine.Instance.GraphicsDevice, fileStream);
             fileStream.Close();
 

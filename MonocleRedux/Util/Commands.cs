@@ -102,7 +102,7 @@ namespace Monocle
         {
             if (!canOpen)
                 canOpen = true;
-            else if (MInput.Keyboard.Pressed(Keys.Back))
+            else if (MInput.Keyboard.Pressed(Keys.LeftAlt))
             {
                 Open = true;
                 currentState = Keyboard.GetState();
@@ -378,7 +378,7 @@ namespace Monocle
                     break;
 
                 case Keys.Oem8:
-                case Keys.Escape:
+                case Keys.LeftAlt:
                     Open = canOpen = false;
                     break;
             }
@@ -427,10 +427,10 @@ namespace Monocle
 
             Monocle.Draw.Rect(10, screenHeight - 50, screenWidth - 20, 40, Color.Black * OPACITY);
             if (underscore)
-                Draw.DefaultFont.DrawString(">" + currentText + "_", new Vector2(20, screenHeight - 42));
+                Draw.DefaultFont.DrawString(">" + currentText + "_", new Vector2(20, screenHeight - 42), Color.White);
             //Monocle.Draw.SpriteBatch.DrawString(Monocle.Draw.DefaultFont, ">" + currentText + "_", new Vector2(20, screenHeight - 42), Color.White);
             else
-                Draw.DefaultFont.DrawString(">" + currentText, new Vector2(20, screenHeight - 42));
+                Draw.DefaultFont.DrawString(">" + currentText, new Vector2(20, screenHeight - 42), Color.White);
             //Monocle.Draw.SpriteBatch.DrawString(Monocle.Draw.DefaultFont, ">" + currentText, new Vector2(20, screenHeight - 42), Color.White);
 
             if (drawCommands.Count > 0)
@@ -438,7 +438,7 @@ namespace Monocle
                 int height = 10 + (30 * drawCommands.Count);
                 Monocle.Draw.Rect(10, screenHeight - height - 60, screenWidth - 20, height, Color.Black * OPACITY);
                 for (int i = 0; i < drawCommands.Count; i++)
-                    Draw.DefaultFont.DrawString(drawCommands[i].Text, new Vector2(20, screenHeight - 92 - (30 * i)));
+                    Draw.DefaultFont.DrawString(drawCommands[i].Text, new Vector2(20, screenHeight - 92 - (30 * i)), drawCommands[i].Color);
                 //Monocle.Draw.SpriteBatch.DrawString(Monocle.Draw.DefaultFont, drawCommands[i].Text, new Vector2(20, screenHeight - 92 - (30 * i)), drawCommands[i].Color);
             }
 

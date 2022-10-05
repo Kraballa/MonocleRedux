@@ -301,7 +301,7 @@ namespace Monocle
 
             public float X
             {
-                get { return Position.X; }
+                get { return Position.X - Engine.ViewPadding; }
                 set { Position = new Vector2(value, Position.Y); }
             }
 

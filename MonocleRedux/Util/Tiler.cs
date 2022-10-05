@@ -5,7 +5,7 @@ namespace Monocle
 {
     public static class Tiler
     {
-        public enum EdgeBehavior { True, False, Wrap };
+        public enum EdgeBehavior { True, False, Wrap, Repeat };
 
         public static int[,] Tile(bool[,] bits, Func<int> tileDecider, Action<int> tileOutput, int tileWidth, int tileHeight, EdgeBehavior edges)
         {
@@ -55,6 +55,18 @@ namespace Monocle
                                 UpRight = bits[(TileX + 1) % boundsX, (TileY + boundsY - 1) % boundsY];
                                 DownLeft = bits[(TileX + boundsX - 1) % boundsX, (TileY + 1) % boundsY];
                                 DownRight = bits[(TileX + 1) % boundsX, (TileY + 1) % boundsY];
+                                break;
+
+                            case EdgeBehavior.Repeat:
+                                Left = TileX == 0 ? bits[TileX, TileY] : bits[TileX - 1, TileY];
+                                Right = TileX == boundsX - 1 ? bits[TileX, TileY] : bits[TileX + 1, TileY];
+                                Up = TileY == 0 ? bits[TileX, TileY] : bits[TileX, TileY - 1];
+                                Down = TileY == boundsY - 1 ? bits[TileX, TileY] : bits[TileX, TileY + 1];
+
+                                UpLeft = (TileX == 0 || TileY == 0) ? false : bits[TileX - 1, TileY - 1];
+                                UpRight = (TileX == boundsX - 1 || TileY == 0) ? false : bits[TileX + 1, TileY - 1];
+                                DownLeft = (TileX == 0 || TileY == boundsY - 1) ? false : bits[TileX - 1, TileY + 1];
+                                DownRight = (TileX == boundsX - 1 || TileY == boundsY - 1) ? false : bits[TileX + 1, TileY + 1];
                                 break;
                         }
 

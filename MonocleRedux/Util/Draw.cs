@@ -154,6 +154,7 @@ namespace Monocle
 
         #region Rect
 
+
         public static void Rect(float x, float y, float width, float height, Color color)
         {
             rect.X = (int)x;
@@ -166,6 +167,11 @@ namespace Monocle
         public static void Rect(Vector2 position, float width, float height, Color color)
         {
             Rect(position.X, position.Y, width, height, color);
+        }
+
+        public static void Rect(Vector2 position, Vector2 dim, Color color)
+        {
+            Rect(position.X, position.Y, dim.X, dim.Y, color);
         }
 
         public static void Rect(Rectangle rect, Color color)
@@ -326,6 +332,25 @@ namespace Monocle
                     if (i != 0 || j != 0)
                         Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position) + new Vector2(i, j), outlineColor, 0, origin, scale, SpriteEffects.None, 0);
             Draw.SpriteBatch.DrawString(font, text, Calc.Floor(position), color, 0, origin, scale, SpriteEffects.None, 0);
+        }
+
+        #endregion
+
+        #region Text BitmapFont
+
+        public static void Text(BitmapFont font, string text, Vector2 position, Color color)
+        {
+            font.DrawString(text, position, color);
+        }
+
+        public static void TextCentered(BitmapFont font, string text, Vector2 position)
+        {
+            Text(font, text, position - font.MeasureString(text) * .5f, Color.White);
+        }
+
+        public static void TextCentered(BitmapFont font, string text, Vector2 position, Color color)
+        {
+            Text(font, text, position - font.MeasureString(text) * .5f, color);
         }
 
         #endregion

@@ -463,7 +463,7 @@ namespace Monocle
 
         public override bool Collide(Circle circle)
         {
-            return false;
+            return Collide(circle.AbsolutePosition);
         }
 
         public override bool Collide(ColliderList list)

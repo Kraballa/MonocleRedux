@@ -262,8 +262,9 @@ namespace Monocle
             {
 #if DEBUG
                 Window.Title = Title + " " + fpsCounter.ToString() + " fps - " + (GC.GetTotalMemory(false) / 1048576f).ToString("F") + " MB";
-#endif
+#else
                 Window.Title = Title;
+#endif
                 FPS = fpsCounter;
                 fpsCounter = 0;
                 counterElapsed -= TimeSpan.FromSeconds(1);

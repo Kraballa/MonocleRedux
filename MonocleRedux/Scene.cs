@@ -23,7 +23,7 @@ namespace Monocle
 
         public Scene()
         {
-			Tracker.Initialize();
+            Tracker.Initialize();
             Tracker = new Tracker();
             Entities = new EntityList(this);
             TagLists = new TagLists();

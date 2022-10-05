@@ -10,6 +10,7 @@ namespace Monocle
         public Dictionary<int, MTexture> CharacterMap = new Dictionary<int, MTexture>();
         public int CharWidth { get; private set; }
         public int CharHeight { get; private set; }
+        public int NewlineOffset { get; private set; } = 4;
 
         /// <summary>
         /// Bitmap font wrapper. Maps chars onto their ascii equivalent, depending on the image source.
@@ -46,7 +47,7 @@ namespace Monocle
             {
                 for (int i = 0; i < split[line].Length; i++)
                 {
-                    CharacterMap[split[line][i]].Draw(new Vector2(x + i * CharWidth, y + line * CharHeight));
+                    CharacterMap[split[line][i]].Draw(new Vector2(x + i * CharWidth, y + line * (CharHeight + 1)));
                 }
             }
         }
@@ -63,7 +64,7 @@ namespace Monocle
             {
                 for (int i = 0; i < split[line].Length; i++)
                 {
-                    CharacterMap[split[line][i]].Draw(new Vector2(x + i * CharWidth, y + line * CharHeight), Vector2.Zero, color);
+                    CharacterMap[split[line][i]].Draw(new Vector2(x + i * CharWidth, y + line * (CharHeight + NewlineOffset)), Vector2.Zero, color);
                 }
             }
         }
@@ -100,7 +101,7 @@ namespace Monocle
                     }
                     else
                     {
-                        CharacterMap[split[line][i]].Draw(new Vector2(x + charCount * CharWidth, y + line * CharHeight), Vector2.Zero, currentColor);
+                        CharacterMap[split[line][i]].Draw(new Vector2(x + charCount * CharWidth, y + line * (CharHeight + 1)), Vector2.Zero, currentColor);
                         charCount++;
                     }
                 }
@@ -118,6 +119,19 @@ namespace Monocle
                 width = other > width ? other : width;
             }
             return new Vector2(width, height);
+        }
+
+        public Rectangle MeasureStringRect(string text)
+        {
+            string[] split = text.Split('\n');
+            int width = 0;
+            int height = CharHeight * split.Length;
+            for (int i = 0; i < split.Length; i++)
+            {
+                int other = split[i].Length * CharWidth;
+                width = other > width ? other : width;
+            }
+            return new Rectangle(0, 0, width, height);
         }
     }
 }

@@ -599,7 +599,7 @@ namespace Monocle
             else if (!Scene.Tracker.Components.ContainsKey(typeof(T)))
                 throw new Exception("Can't collide check an Entity against an untracked CollidableComponent type");
 #endif
-            
+
             foreach (var c in Scene.Tracker.CollidableComponents[typeof(T)])
                 if (Collide.Check(this, c))
                     return true;
@@ -705,7 +705,7 @@ namespace Monocle
         {
 #if DEBUG
             if (Scene == null)
-                 throw new Exception("Can't collide check an Entity against tracked Entities when it is not a member of a Scene");
+                throw new Exception("Can't collide check an Entity against tracked Entities when it is not a member of a Scene");
             else if (!Scene.Tracker.Entities.ContainsKey(typeof(T)))
                 throw new Exception("Can't collide check an Entity against an untracked Entity type");
 #endif
