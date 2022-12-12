@@ -22,21 +22,23 @@ namespace Demo.Scenes
             ent.Add(new ScreenMeasurer());
             Add(ent);
 
-
-
             Manager.Mouse = new VirtualButton(new VirtualButton.MouseLeftButton());
 
             Manager ui = new Manager();
             ui.Tag = BitTag.Get("ui");
             Add(ui);
 
+            TabPanel tab = new TabPanel();
+
             StackPanel panel = new StackPanel();
             panel.Border = 0;
-            panel.ExpandElements = true;
             StackPanel panel2 = new StackPanel(Orientation.Horizontal) { Border = 0 };
             StackPanel panel3 = new StackPanel(Orientation.Horizontal) { Border = 0 };
-            StackPanel panel4 = new StackPanel(Orientation.Horizontal) { Border = 0 };
-            StackPanel panel5 = new StackPanel(Orientation.Horizontal) { Border = 0 };
+            StackPanel panel4 = new StackPanel(Orientation.Horizontal)
+            {
+                Border = 0,
+                ExpandElements = false
+            };
 
             for (int i = 0; i < 2; i++)
             {
@@ -50,13 +52,22 @@ namespace Demo.Scenes
             {
                 panel4.Add(new Button($"test{i}"));
             }
-            panel5.Add(new Button($"very very very big test bingus"));
+            panel.Add(new Button($"very very very big test bingus"));
 
             panel.Add(panel2);
             panel.Add(panel3);
-            panel.Add(panel4);
-            panel.Add(panel5);
-            ui.Add(new Window(panel) { Width = 400, Height = 400, Position = new Vector2(Engine.Width / 2 - 400 / 2, Engine.Height / 2 - 400 / 2) });
+            //panel.Add(panel4);
+            StackPanel panel5 = new StackPanel();
+            panel5.Add(panel4);
+            panel5.Border = 0;
+            tab.AddTab(panel, "Main Panel");
+
+            TabPanel tab2 = new TabPanel();
+            tab2.AddTab(new StackPanel(), "nested1");
+            tab2.AddTab(new StackPanel(), "nested2");
+            tab.AddTab(tab2, "nestedtab");
+            tab.AddTab(panel5, "Other");
+            ui.Add(new Window(tab) { Width = 400, Height = 400, Position = new Vector2(Engine.Width / 2 - 400 / 2, Engine.Height / 2 - 400 / 2) });
         }
     }
 }

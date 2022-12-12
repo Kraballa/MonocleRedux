@@ -34,7 +34,7 @@ namespace Monocle.UI
 
         public virtual void Update()
         {
-
+            Panel.Update();
         }
 
         public virtual void Render()

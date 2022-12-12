@@ -14,9 +14,9 @@ namespace Monocle.UI
         public int Border { get; set; } = 2;
         public int Margin { get; set; } = 2;
 
-        public Vector2 InnerPosition => Position + new Vector2(Border, Border);
-        public float InnerWidth => Width - Border * 2;
-        public float InnerHeight => Height - Border * 2;
+        public virtual Vector2 InnerPosition => Position + new Vector2(Border, Border);
+        public virtual float InnerWidth => Width - Border * 2;
+        public virtual float InnerHeight => Height - Border * 2;
 
         public virtual void Add(Element element)
         {
