@@ -451,6 +451,84 @@ namespace Monocle
             return false;
         }
 
+        /// <summary>
+        /// Raycasting using the DDA algorithm as seen in https://www.youtube.com/watch?v=NbSee-XM7WA
+        /// Return the point of collision
+        /// </summary>
+        public Vector2 Raycast(Vector2 vRayStart, float direction)
+        {
+            //normalized direction vector
+            Vector2 vRayDir = new Vector2(MathF.Cos(direction), MathF.Sin(direction));
+
+            vRayStart /= new Vector2(CellWidth, CellHeight);
+
+            Vector2 unitStepSize = new Vector2(
+                MathF.Sqrt(1 + (vRayDir.Y / vRayDir.X) * (vRayDir.Y / vRayDir.X)),
+                MathF.Sqrt(1 + (vRayDir.X / vRayDir.Y) * (vRayDir.X / vRayDir.Y))
+                );
+
+            Point vMapCheck = new Point((int)vRayStart.X, (int)vRayStart.Y);
+            Vector2 vRayLength1D;
+
+            Point vStep = new Point();
+
+            if (vRayDir.X < 0)
+            {
+                vStep.X = -1;
+                vRayLength1D.X = (vRayStart.X - vMapCheck.X) * unitStepSize.X;
+            }
+            else
+            {
+                vStep.X = 1;
+                vRayLength1D.X = ((vMapCheck.X + 1) - vRayStart.X) * unitStepSize.X;
+            }
+
+            if (vRayDir.Y < 0)
+            {
+                vStep.Y = -1;
+                vRayLength1D.Y = (vRayStart.Y - vMapCheck.Y) * unitStepSize.Y;
+            }
+            else
+            {
+                vStep.Y = 1;
+                vRayLength1D.Y = ((vMapCheck.Y + 1) - vRayStart.Y) * unitStepSize.Y;
+            }
+
+            bool found = false;
+            float maxDist = 30;
+            float dist = 0f;
+            while (!found && dist < maxDist)
+            {
+                if(vRayLength1D.X < vRayLength1D.Y)
+                {
+                    vMapCheck.X+=vStep.X;
+                    dist = vRayLength1D.X;
+                    vRayLength1D.X += unitStepSize.X;
+                }
+                else
+                {
+                    vMapCheck.Y += vStep.Y;
+                    dist = vRayLength1D.Y;
+                    vRayLength1D.Y += unitStepSize.Y;
+                }
+
+                if (vMapCheck.X >= 0 && vMapCheck.X < Data.Columns && vMapCheck.Y >= 0 && vMapCheck.Y < Data.Rows)
+                {
+                    if (this[vMapCheck.X, vMapCheck.Y])
+                    {
+                        found = true;
+                    }
+                }
+            }
+
+            if (found)
+            {
+                return (vRayStart + vRayDir * dist) * new Vector2(CellWidth,CellHeight);
+            }
+
+            return Vector2.Zero;
+        }
+
         public override bool Collide(Hitbox hitbox)
         {
             return Collide(hitbox.Bounds);
