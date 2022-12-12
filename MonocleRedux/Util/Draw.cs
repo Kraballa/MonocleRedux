@@ -353,6 +353,22 @@ namespace Monocle
             Text(font, text, position - font.MeasureString(text) * .5f, color);
         }
 
+        public static void TextJustify(BitmapFont font, string text, Vector2 position, Vector2 justify, Color color)
+        {
+            Vector2 dim = font.MeasureString(text);
+            Text(font, text, position - dim * justify, color);
+        }
+
+        public static void OutlineTextJustify(BitmapFont font, string text, Vector2 position, Vector2 justify, Color color, Color outline)
+        {
+            Vector2 dim = font.MeasureString(text);
+            for (int i = -1; i < 2; i++)
+                for (int j = -1; j < 2; j++)
+                    if (i != 0 || j != 0)
+                        Text(font, text, position - dim * justify + new Vector2(i, j), outline);
+            Text(font, text, position - dim * justify, color);
+        }
+
         #endregion
 
         #region Weird Textures

@@ -226,11 +226,13 @@ namespace Monocle
                 scene.AfterUpdate();
             }
 
+#if DEBUG
             //Debug Console
             if (Commands.Open)
                 Commands.UpdateOpen();
             else if (Commands.Enabled)
                 Commands.UpdateClosed();
+#endif
 
             //Changing scenes
             if (scene != nextScene)

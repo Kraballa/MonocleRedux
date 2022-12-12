@@ -16,7 +16,7 @@ namespace Monocle
 
         public static Point ToPoint(this Vector2 vec)
         {
-            return new Point((int)Math.Round(vec.X), (int)Math.Round(vec.Y));
+            return new Point((int)vec.X, (int)vec.Y);
         }
     }
 }
