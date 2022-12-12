@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Monocle
 {
-    internal class AnimatedImage : Image
+    public class AnimatedImage : Image
     {
         public enum EndBehavior
         {
@@ -44,19 +44,18 @@ namespace Monocle
 
         private EndBehavior Behavior { get; set; }
 
-        public AnimatedImage(MTexture texture, int frameWidth, int frameHeight, float animDuration, EndBehavior behavior = EndBehavior.Hide) : base(texture)
+        public AnimatedImage(MTexture texture, int frameWidth, int frameHeight, float animDuration, EndBehavior behavior = EndBehavior.Hide) : base(texture, true)
         {
             Source = texture;
 
             FrameWidth = frameWidth;
             FrameHeight = frameHeight;
 
-            int NumFrames = Source.Width / FrameWidth;
+            NumFrames = Source.Width / FrameWidth;
 
             FrameDuration = animDuration / NumFrames;
 
             Behavior = behavior;
-
 
             Texture = GetFrame(0);
         }
@@ -69,13 +68,13 @@ namespace Monocle
                 return;
 
             FrameCounter += Engine.DeltaTime;
-            if(FrameCounter >= FrameDuration)
+            if (FrameCounter >= FrameDuration)
             {
-                if(FrameIndex < NumFrames-1)
+                if (FrameIndex < NumFrames)
                 {
                     FrameIndex++;
                     Texture = GetFrame(FrameIndex);
-                    FrameCounter -= NumFrames;
+                    FrameCounter -= FrameDuration;
                 }
                 else //ran out of frames
                 {
@@ -84,7 +83,6 @@ namespace Monocle
                         case EndBehavior.Loop:
                             FrameIndex = 0;
                             FrameCounter -= NumFrames;
-                            Texture = GetFrame(FrameIndex);
                             break;
                         default:
                         case EndBehavior.Freeze:

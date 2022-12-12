@@ -145,7 +145,7 @@ namespace Monocle
             int left, top, right, bottom;
             if (ClipCamera == null)
             {
-                //throw new Exception("NULL CLIP: " + Entity.GetType().ToString());
+                throw new Exception("NULL CLIP: " + Entity.GetType().ToString());
                 left = -VisualExtend;
                 top = -VisualExtend;
                 right = TilesX + VisualExtend;
