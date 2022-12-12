@@ -12,19 +12,24 @@ namespace Demo
 {
     public class Core : Engine
     {
-        public Core() : base(320, 180, 1280, 720, "Monocle Redux Demo", false)
+        public Core() : base(1920, 1080, 1920, 1080, "Monocle Redux Demo", false)
         {
-            ClearColor = Color.Black;
+            ClearColor = Color.White;
 
             IsMouseVisible = true;
             ExitOnEscapeKeypress = false;
-
-            Scene = new DemoScene();
+            Window.AllowUserResizing = false;
+            IsFixedTimeStep = false;
         }
 
         protected override void Initialize()
         {
             base.Initialize();
+
+            //initialize tags
+            new BitTag("ui");
+
+            Scene = new DemoScene();
         }
     }
 }
