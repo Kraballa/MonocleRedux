@@ -23,7 +23,7 @@ namespace Monocle.UI
         {
             //some default values
             Width = 80;
-            Height = 26;
+            Height = 32;
         }
 
         public virtual void Layout()

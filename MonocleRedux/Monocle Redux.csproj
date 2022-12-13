@@ -18,4 +18,10 @@
 		<ProjectReference Include="..\..\..\..\Documents\Sources\Lib\FNA\FNA.Core.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <None Update="Content\windows.png">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
+
 </Project>

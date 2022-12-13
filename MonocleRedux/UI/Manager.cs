@@ -16,7 +16,6 @@ namespace Monocle.UI
 
         public Manager() : base()
         {
-            DefaultFont = Draw.DefaultFont;
         }
 
         /// <summary>

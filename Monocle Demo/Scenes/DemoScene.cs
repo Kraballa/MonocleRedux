@@ -23,6 +23,7 @@ namespace Demo.Scenes
             Add(ent);
 
             Manager.Mouse = new VirtualButton(new VirtualButton.MouseLeftButton());
+            Manager.DefaultFont = new BitmapFont(MTexture.FromFile(Path.Combine("Content", "windows.png")), 12, 20);
 
             Manager ui = new Manager();
             ui.Tag = BitTag.Get("ui");
@@ -46,7 +47,7 @@ namespace Demo.Scenes
             }
             for (int i = 0; i < 4; i++)
             {
-                panel3.Add(new Button($"test{i}"));
+                panel3.Add(new Label($"test{i}"));
             }
             for (int i = 0; i < 3; i++)
             {
