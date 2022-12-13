@@ -15,7 +15,6 @@ namespace Monocle.UI
 
         public override void Render()
         {
-
             if (Hovered())
             {
                 Draw.Rect(Position, Width, Height, Color.CadetBlue);

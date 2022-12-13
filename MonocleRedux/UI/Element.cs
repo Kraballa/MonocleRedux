@@ -33,7 +33,10 @@ namespace Monocle.UI
 
         public virtual void Update()
         {
-
+            if (Hovered() && Manager.Mouse.Pressed)
+            {
+                OnClick?.Invoke();
+            }
         }
 
         public virtual void Render()

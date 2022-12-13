@@ -14,7 +14,7 @@ namespace Monocle.UI
         public List<string> Titles = new List<string>();
 
         public int CurrentPanel = 0;
-        public int TabTitleMargin = 12;
+        public int TabTitleMargin = 8;
 
         public float TabBarHeight;
         public override Vector2 InnerPosition => base.InnerPosition + Vector2.UnitY * TabBarHeight;

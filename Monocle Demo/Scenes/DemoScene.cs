@@ -5,6 +5,7 @@ using Monocle.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -53,7 +54,9 @@ namespace Demo.Scenes
             {
                 panel4.Add(new Button($"test{i}"));
             }
-            panel.Add(new Button($"very very very big test bingus"));
+            Button b = new Button($"very very very big test bingus");
+            b.OnClick += () => { b.Text = "clicked!"; };
+            panel.Add(b);
 
             panel.Add(panel2);
             panel.Add(panel3);
@@ -68,7 +71,7 @@ namespace Demo.Scenes
             tab2.AddTab(new StackPanel(), "nested2");
             tab.AddTab(tab2, "nestedtab");
             tab.AddTab(panel5, "Other");
-            ui.Add(new Window(tab) { Width = 400, Height = 400, Position = new Vector2(Engine.Width / 2 - 400 / 2, Engine.Height / 2 - 400 / 2) });
+            ui.Add(new Window(tab) { Width = 400, Height = 400, Alignment = WindowAlignment.Center });
         }
     }
 }

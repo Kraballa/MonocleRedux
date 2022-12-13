@@ -29,6 +29,12 @@ namespace Monocle.UI
             Elements.ForEach((e) => e.Render());
         }
 
+        public override void Update()
+        {
+            Elements.ForEach((e) => e.Update());
+            base.Update();
+        }
+
         public override void Layout()
         {
             base.Layout();
