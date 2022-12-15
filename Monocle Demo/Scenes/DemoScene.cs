@@ -39,7 +39,7 @@ namespace Demo.Scenes
             }
             for (int i = 0; i < 4; i++)
             {
-                panel3.Add(new Label($"test{i}"));
+                panel3.Add(new Button($"test{i}"));
             }
             for (int i = 0; i < 3; i++)
             {
@@ -50,7 +50,9 @@ namespace Demo.Scenes
             panel.Add(b);
 
             panel.Add(panel2);
+            panel.Add(new Splitter(Orientation.Horizontal));
             panel.Add(panel3);
+
             //panel.Add(panel4);
             StackPanel panel5 = new StackPanel();
             panel5.Add(panel4);
@@ -63,9 +65,9 @@ namespace Demo.Scenes
             //tab.AddTab(tab2, "nestedtab");
             //tab.AddTab(panel5, "Other");
 
-            SplitPanel split = new SplitPanel(tab, tab2, 0.7f, Orientation.Horizontal);
+            SplitPanel split = new SplitPanel(tab, tab2, 0.5f, Orientation.Horizontal);
 
-            ui.Add(new Window(split) { Width = 800, Height = Engine.Height, Alignment = WindowAlignment.CenterLeft });
+            ui.Add(new Window(split) { Width = 1000, Height = 900, Alignment = WindowAlignment.Center });
         }
     }
 }

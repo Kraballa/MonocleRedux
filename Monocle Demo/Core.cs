@@ -17,7 +17,6 @@ namespace Demo
             ClearColor = Color.White;
 
             IsMouseVisible = true;
-            ExitOnEscapeKeypress = false;
             Window.AllowUserResizing = false;
             IsFixedTimeStep = false;
         }
