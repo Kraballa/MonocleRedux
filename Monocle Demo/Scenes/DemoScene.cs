@@ -53,6 +53,10 @@ namespace Demo.Scenes
             panel.Add(new Splitter(Orientation.Horizontal));
             panel.Add(panel3);
 
+            Button button = new Button("Push Panel");
+            button.OnClick += AddWindow;
+            panel.Add(button);
+
             //panel.Add(panel4);
             StackPanel panel5 = new StackPanel();
             panel5.Add(panel4);
@@ -68,6 +72,20 @@ namespace Demo.Scenes
             SplitPanel split = new SplitPanel(tab, tab2, 0.5f, Orientation.Horizontal);
 
             ui.Add(new Window(split) { Width = 1000, Height = 900, Alignment = WindowAlignment.Center });
+        }
+
+        private void AddWindow()
+        {
+            StackPanel panel = new StackPanel();
+            Button button = new Button("Push Panel");
+            button.OnClick += () => AddWindow();
+
+            Button button2 = new Button("Pop Panel");
+            button2.OnClick += () => Manager.Instance.Pop();
+
+            panel.Add(button);
+            panel.Add(button2);
+            Manager.Instance.Push(new Window(panel) { Width = 300 - Manager.Instance.Depth * 10, Height = 220 - Manager.Instance.Depth * 10, Alignment = WindowAlignment.Center });
         }
     }
 }

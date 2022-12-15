@@ -29,7 +29,7 @@ namespace Monocle.UI
         public float Height { get; set; }
         public int Border { get; set; } = 4;
 
-        public Vector2 InnerPosition => Position + new Vector2(Border, Border);
+        public virtual Vector2 InnerPosition => Position + new Vector2(Border, Border);
         public float InnerWidth => Width - Border * 2;
         public float InnerHeight => Height - Border * 2;
         public WindowAlignment Alignment = WindowAlignment.None;

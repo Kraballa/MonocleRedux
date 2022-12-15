@@ -10,12 +10,16 @@ namespace Monocle.UI
     {
         public static BitmapFont DefaultFont;
         public static VirtualButton Mouse;
+        public static Manager Instance;
+
+        public int Depth => UIStack.Count;
 
         private List<Window> UIStack = new List<Window>();
         private List<Window> UIBase = new List<Window>();
 
         public Manager() : base()
         {
+            Instance = this;
         }
 
         /// <summary>
