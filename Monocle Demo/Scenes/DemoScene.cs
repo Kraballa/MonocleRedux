@@ -1,15 +1,6 @@
 ﻿using Demo.Components;
-using Microsoft.Xna.Framework;
 using Monocle;
 using Monocle.UI;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Demo.Scenes
 {
@@ -69,9 +60,12 @@ namespace Demo.Scenes
             TabPanel tab2 = new TabPanel();
             tab2.AddTab(new StackPanel(), "nested1");
             tab2.AddTab(new StackPanel(), "nested2");
-            tab.AddTab(tab2, "nestedtab");
-            tab.AddTab(panel5, "Other");
-            ui.Add(new Window(tab) { Width = 400, Height = 400, Alignment = WindowAlignment.Center });
+            //tab.AddTab(tab2, "nestedtab");
+            //tab.AddTab(panel5, "Other");
+
+            SplitPanel split = new SplitPanel(tab, tab2, 0.7f, Orientation.Horizontal);
+
+            ui.Add(new Window(split) { Width = 800, Height = Engine.Height, Alignment = WindowAlignment.CenterLeft });
         }
     }
 }
