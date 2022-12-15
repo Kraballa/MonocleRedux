@@ -56,12 +56,17 @@ namespace Monocle.UI
             Panel.Update();
         }
 
-        public virtual void Render()
+        public virtual void Render(bool active = true)
         {
             Draw.Rect(Position, Width, Height, new Color(240, 240, 240));
             Draw.HollowRect(Position, Width, Height, new Color(140, 140, 140));
 
             Panel.Render();
+
+            if (!active)
+            {
+                Draw.Rect(Position, Width, Height, new Color(0, 0, 0, 60));
+            }
         }
 
         protected void Align()

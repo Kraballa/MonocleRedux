@@ -69,10 +69,10 @@ namespace Monocle.UI
         public override void Render()
         {
             base.Render();
-            UIBase.ForEach((e) => e.Render());
+            UIBase.ForEach((e) => e.Render(UIStack.Count == 0));
             for (int i = 0; i < UIStack.Count; i++)
             {
-                UIStack[i].Render();
+                UIStack[i].Render(i == UIStack.Count - 1);
             }
         }
     }
