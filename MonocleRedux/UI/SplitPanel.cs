@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Monocle.UI
 {
+    /// <summary>
+    /// A Panel that displays 2 Panels side by side.
+    /// </summary>
     public class SplitPanel : Panel
     {
         public Panel First { get; set; }
@@ -51,11 +54,6 @@ namespace Monocle.UI
             }
             First.Layout();
             Second.Layout();
-        }
-
-        public override void Add(Element element)
-        {
-            throw new Exception("error, cannot accept elements");
         }
 
         public override void Update()

@@ -21,6 +21,9 @@ namespace Monocle.UI
         BottomLeft
     }
 
+    /// <summary>
+    /// The base frame that contains the top level panel.
+    /// </summary>
     public class Window
     {
         public Panel Panel { get; set; }

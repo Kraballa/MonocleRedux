@@ -7,41 +7,16 @@ using System.Threading.Tasks;
 
 namespace Monocle.UI
 {
+    /// <summary>
+    /// A Panel is responsible to contain and layout child elements. Whether those are panels or interactable elements is up to the implementation.
+    /// </summary>
     public abstract class Panel : Element
     {
-        public List<Element> Elements = new List<Element>();
-
         public int Border { get; set; } = 2;
         public int Margin { get; set; } = 2;
 
         public virtual Vector2 InnerPosition => Position + new Vector2(Border, Border);
         public virtual float InnerWidth => Width - Border * 2;
         public virtual float InnerHeight => Height - Border * 2;
-
-        public virtual void Add(Element element)
-        {
-            Elements.Add(element);
-        }
-
-        public override void Render()
-        {
-            base.Render();
-            Elements.ForEach((e) => e.Render());
-        }
-
-        public override void Update()
-        {
-            Elements.ForEach((e) => e.Update());
-            base.Update();
-        }
-
-        public override void Layout()
-        {
-            base.Layout();
-            foreach (Element ele in Elements)
-            {
-                ele.Layout();
-            }
-        }
     }
 }

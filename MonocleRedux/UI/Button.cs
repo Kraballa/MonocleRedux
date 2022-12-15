@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Monocle.UI
 {
+    /// <summary>
+    /// A Button is an element with specific rendering to appear like an ordinary button and reacting to being hovered.
+    /// </summary>
     public class Button : Label
     {
         public Button(string text) : base(text)

@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Monocle.UI
 {
+    /// <summary>
+    /// A simple text label element.
+    /// </summary>
     public class Label : Element
     {
         public string Text { get; set; }

@@ -9,6 +9,9 @@ namespace Monocle.UI
 {
     public delegate void Clicked();
 
+    /// <summary>
+    /// Base class for a part of the ui. This incorporates panels and inputs.
+    /// </summary>
     public class Element
     {
         public Vector2 Position { get; set; }

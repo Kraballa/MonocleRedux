@@ -15,7 +15,10 @@ namespace Monocle.UI
         Horizontal,
     }
 
-    public class StackPanel : Panel
+    /// <summary>
+    /// The most basic panel implementation. Displays elements in either a row or column.
+    /// </summary>
+    public class StackPanel : ElementPanel
     {
         public Orientation Orientation { get; set; }
         public bool ExpandElements { get; set; }

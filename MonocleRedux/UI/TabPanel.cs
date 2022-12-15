@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace Monocle.UI
 {
+    /// <summary>
+    /// A tabbed Panel that may contain a large nubmer of other panels that the user can switch between via the Tab Bar.
+    /// </summary>
     public class TabPanel : Panel
     {
         public List<Panel> Panels = new List<Panel>();
@@ -29,11 +32,6 @@ namespace Monocle.UI
         {
             Panels.Add(panel);
             Titles.Add(title);
-        }
-
-        public override void Add(Element element)
-        {
-            throw new Exception("error, cannot accept an element, use `AddTab` instead");
         }
 
         public override void Layout()

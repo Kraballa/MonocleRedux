@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace Monocle.UI
 {
+    /// <summary>
+    /// Manager for all things UI. Inherits Entity so it incorporates into the rest of Monocle.
+    /// </summary>
     public class Manager : Entity
     {
         public static BitmapFont DefaultFont;
