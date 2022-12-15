@@ -15,7 +15,7 @@ namespace Demo.Scenes
             Add(ent);
 
             Manager.Mouse = new VirtualButton(new VirtualButton.MouseLeftButton());
-            Manager.DefaultFont = new BitmapFont(MTexture.FromFile(Path.Combine("Content", "windows.png")), 12, 20);
+            Manager.DefaultFont = Draw.DefaultFont;// new BitmapFont(MTexture.FromFile(Path.Combine("Content", "windows.png")), 12, 20);
 
             Manager ui = new Manager();
             ui.Tag = BitTag.Get("ui");
@@ -71,7 +71,7 @@ namespace Demo.Scenes
 
             SplitPanel split = new SplitPanel(tab, tab2, 0.5f, Orientation.Horizontal);
 
-            ui.Add(new Window(split) { Width = 1000, Height = 900, Alignment = WindowAlignment.Center });
+            ui.Add(new Window(split) { Width = 700, Height = 500, Alignment = WindowAlignment.Center });
         }
 
         private void AddWindow()

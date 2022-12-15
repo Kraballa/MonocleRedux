@@ -18,16 +18,29 @@ namespace Monocle.UI
 
         public override void Render()
         {
+            Color border;
+            Color bg;
+
             if (Hovered())
             {
-                Draw.Rect(Position, Width, Height, Color.CadetBlue);
-                Draw.HollowRect(Position, Width, Height, Color.DarkBlue);
+                if (Manager.Mouse.Check)
+                {
+                    bg = Color.LightBlue;
+                    border = Color.CadetBlue;
+                }
+                else
+                {
+                    bg = Color.CadetBlue;
+                    border = Color.DarkBlue;
+                }
             }
             else
             {
-                Draw.Rect(Position, Width, Height, Color.DarkGray);
-                Draw.HollowRect(Position, Width, Height, Color.Gray);
+                bg = Color.DarkGray;
+                border = Color.Gray;
             }
+            Draw.Rect(Position, Width, Height, bg);
+            Draw.HollowRect(Position, Width, Height, border);
             base.Render();
         }
     }
