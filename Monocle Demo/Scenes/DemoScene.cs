@@ -61,6 +61,21 @@ namespace Demo.Scenes
             StackPanel panel5 = new StackPanel();
             panel5.Add(panel4);
             panel5.Border = 0;
+
+            StackPanel control = new StackPanel(Orientation.Horizontal);
+            control.Border = 0;
+            ProgressBar bar = new ProgressBar();
+            Button barChanger1 = new Button("-10");
+            barChanger1.OnClick += () => bar.Value -= 10;
+            control.Add(barChanger1);
+            Button barChanger2 = new Button("+10");
+            barChanger2.OnClick += () => bar.Value += 10;
+            control.Add(barChanger2);
+            panel.Add(control);
+            panel.Add(bar);
+            panel.Add(new Label("Loading..."));
+
+
             tab.AddTab(panel, "Main Panel");
 
             TabPanel tab2 = new TabPanel();

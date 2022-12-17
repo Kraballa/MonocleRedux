@@ -12,7 +12,7 @@ namespace Demo
 {
     public class Core : Engine
     {
-        public Core() : base(1920, 1080, 1920, 1080, "Monocle Redux Demo", false)
+        public Core() : base(1920 / 2, 1080 / 2, 1920, 1080, "Monocle Redux Demo", false)
         {
             ClearColor = Color.White;
 
