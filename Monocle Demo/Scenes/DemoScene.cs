@@ -46,7 +46,8 @@ namespace Demo.Scenes
                 panel4.Add(new Button($"test{i}"));
             }
             Button b = new Button($"very very very big test bingus");
-            b.OnClick += () => { b.Text = "clicked!"; };
+            int count = 0;
+            b.OnClick += () => { count++; b.Text = $"clicked {count} times"; };
             panel.Add(b);
 
             panel.Add(panel2);
@@ -76,7 +77,7 @@ namespace Demo.Scenes
             showcase.Add(control);
             showcase.Add(bar);
             Label progressLabel = new Label("Loading...");
-            bar.OnChanged += (val) => progressLabel.Text = $"Loading {val}%";
+            bar.OnChanged += (val) => progressLabel.Text = val == 100 ? "Done Loading!" : $"Loading {val}%";
             showcase.Add(progressLabel);
             Checkbox cb = new Checkbox("Bingus Box");
             showcase.Add(cb);
@@ -84,6 +85,8 @@ namespace Demo.Scenes
             cb.OnChanged += (val) => checkboxLabel.Text = $"value: {val}";
 
             showcase.Add(checkboxLabel);
+            showcase.Add(new TextBox("Bingus Text"));
+            showcase.Add(new TextBox("Bingus Text2"));
 
             tab.AddTab(panel, "Main Panel");
 
@@ -109,6 +112,7 @@ namespace Demo.Scenes
 
             panel.Add(button);
             panel.Add(button2);
+            panel.Add(new TextBox("HIIHII"));
             Manager.Instance.Push(new Window(panel) { Width = 300 - Manager.Instance.Depth * 10, Height = 220 - Manager.Instance.Depth * 10, Alignment = WindowAlignment.Center });
         }
     }

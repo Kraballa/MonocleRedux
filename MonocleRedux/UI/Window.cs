@@ -30,6 +30,10 @@ namespace Monocle.UI
         public Vector2 Position { get; set; }
         public float Width { get; set; }
         public float Height { get; set; }
+
+        /// <summary>
+        /// Space between the outer edge of the window and the panel edge inside.
+        /// </summary>
         public int Border { get; set; } = 4;
 
         public virtual Vector2 InnerPosition => Position + new Vector2(Border, Border);

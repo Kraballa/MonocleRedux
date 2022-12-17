@@ -12,7 +12,14 @@ namespace Monocle.UI
     /// </summary>
     public abstract class Panel : Element
     {
+        /// <summary>
+        /// Space between the outer edge of the panel and the content inside the panel
+        /// </summary>
         public int Border { get; set; } = 2;
+
+        /// <summary>
+        /// Space inbetween each element inside the panel
+        /// </summary>
         public int Margin { get; set; } = 2;
 
         public virtual Vector2 InnerPosition => Position + new Vector2(Border, Border);
