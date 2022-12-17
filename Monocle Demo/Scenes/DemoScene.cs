@@ -62,6 +62,8 @@ namespace Demo.Scenes
             panel5.Add(panel4);
             panel5.Border = 0;
 
+            StackPanel showcase = new StackPanel();
+
             StackPanel control = new StackPanel(Orientation.Horizontal);
             control.Border = 0;
             ProgressBar bar = new ProgressBar();
@@ -71,17 +73,22 @@ namespace Demo.Scenes
             Button barChanger2 = new Button("+10");
             barChanger2.OnClick += () => bar.Value += 10;
             control.Add(barChanger2);
-            panel.Add(control);
-            panel.Add(bar);
+            showcase.Add(control);
+            showcase.Add(bar);
             Label progressLabel = new Label("Loading...");
             bar.OnChanged += (val) => progressLabel.Text = $"Loading {val}%";
-            panel.Add(progressLabel);
+            showcase.Add(progressLabel);
+            Checkbox cb = new Checkbox("Bingus Box");
+            showcase.Add(cb);
+            Label checkboxLabel = new Label("");
+            cb.OnChanged += (val) => checkboxLabel.Text = $"value: {val}";
 
+            showcase.Add(checkboxLabel);
 
             tab.AddTab(panel, "Main Panel");
 
             TabPanel tab2 = new TabPanel();
-            tab2.AddTab(new StackPanel(), "nested1");
+            tab2.AddTab(showcase, "nested1");
             tab2.AddTab(new StackPanel(), "nested2");
             //tab.AddTab(tab2, "nestedtab");
             //tab.AddTab(panel5, "Other");

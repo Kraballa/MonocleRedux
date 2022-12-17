@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace Monocle.UI
 {
-
-    public delegate void Changed(int newVal);
+    public delegate void ProgressChanged(int newVal);
 
     public class ProgressBar : Element
     {
@@ -27,7 +26,7 @@ namespace Monocle.UI
 
         private int _value;
 
-        public event Changed OnChanged;
+        public event ProgressChanged OnChanged;
 
         public ProgressBar(int value = 0) : base()
         {

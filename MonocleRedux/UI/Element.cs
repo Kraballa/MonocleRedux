@@ -52,5 +52,10 @@ namespace Monocle.UI
             Vector2 pos = MInput.Mouse.Position;
             return pos.X >= Position.X && pos.Y >= Position.Y && pos.X <= Position.X + Width && pos.Y <= Position.Y + Height;
         }
+
+        protected void DrawBounds()
+        {
+            Draw.HollowRect(Position, Width, Height, Color.Red);
+        }
     }
 }
