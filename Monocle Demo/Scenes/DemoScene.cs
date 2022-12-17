@@ -73,7 +73,9 @@ namespace Demo.Scenes
             control.Add(barChanger2);
             panel.Add(control);
             panel.Add(bar);
-            panel.Add(new Label("Loading..."));
+            Label progressLabel = new Label("Loading...");
+            bar.OnChanged += (val) => progressLabel.Text = $"Loading {val}%";
+            panel.Add(progressLabel);
 
 
             tab.AddTab(panel, "Main Panel");

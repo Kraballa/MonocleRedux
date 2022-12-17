@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Monocle.UI
 {
+
+    public delegate void Changed(int newVal);
+
     public class ProgressBar : Element
     {
         public const int MAX_VALUE = 100;
@@ -18,10 +21,13 @@ namespace Monocle.UI
             set
             {
                 _value = Math.Clamp(value, MIN_VALUE, MAX_VALUE);
+                OnChanged?.Invoke(_value);
             }
         }
 
         private int _value;
+
+        public event Changed OnChanged;
 
         public ProgressBar(int value = 0) : base()
         {
