@@ -48,7 +48,35 @@ namespace Demo.Scenes
             Button b = new Button($"very very very big test bingus");
             int count = 0;
             b.OnClick += () => { count++; b.Text = $"clicked {count} times"; };
+            Label l = new Label("");
+            b.OnClick += () =>
+            {
+                string text = "";
+                if (count % 3 == 0)
+                {
+                    text += "Fizz";
+                }
+                if (count % 5 == 0)
+                {
+                    text += "Buzz";
+                }
+                if (count % 7 == 0)
+                {
+                    text += "Bingus";
+                }
+                if (count % 11 == 0)
+                {
+                    text += "Bangus";
+                }
+                if (text == "")
+                {
+                    text = "" + count;
+                }
+                l.Text = text;
+            };
+            l.OnClick += () => l.Text = "haha he said " + l.Text;
             panel.Add(b);
+            panel.Add(l);
 
             panel.Add(panel2);
             panel.Add(new Splitter(Orientation.Horizontal));

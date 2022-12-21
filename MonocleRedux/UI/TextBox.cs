@@ -20,6 +20,8 @@ namespace Monocle.UI
 
         private static List<TextBox> Boxes = new List<TextBox>();
 
+        private int MaxTextLength => (int)(Width / Manager.DefaultFont.CharWidth) - 1;
+
         public event TextBoxSelected OnSelected;
         public event TextBoxChanged OnChanged;
 
@@ -51,26 +53,46 @@ namespace Monocle.UI
             {
                 if (MInput.Keyboard.Pressed(key))
                 {
-                    switch (key)
+                    if (key == Keys.Back)
                     {
-                        default:
-                            if (key.ToString().Length == 1)
+                        if (Text.Length > 0)
+                        {
+                            if (MInput.Keyboard.Check(Keys.LeftControl))
                             {
-                                if (MInput.Keyboard.Check(Keys.LeftShift) || MInput.Keyboard.Check(Keys.RightShift))
-                                    Text += key.ToString();
-                                else
-                                    Text += key.ToString().ToLower();
+                                int currentIndex = Text.Length - 1;
+                                while (currentIndex > 0 && Text[currentIndex] != ' ')
+                                {
+                                    currentIndex--;
+                                }
+                                Text = Text.Substring(0, currentIndex);
                             }
-                            break;
-                        case Keys.Back:
-                            if (Text.Length > 0)
+                            else
                             {
                                 Text = Text.Substring(0, Text.Length - 1);
                             }
-                            break;
-                        case Keys.Space:
-                            Text += " ";
-                            break;
+                        }
+                    }
+                    else if (Text.Length < MaxTextLength)
+                    {
+                        //all keys that add characters here
+                        switch (key)
+                        {
+                            default:
+                                if (key.ToString().Length == 1)
+                                {
+                                    if (MInput.Keyboard.Check(Keys.LeftShift) || MInput.Keyboard.Check(Keys.RightShift))
+                                        Text += key.ToString();
+                                    else
+                                        Text += key.ToString().ToLower();
+                                }
+                                break;
+                            case Keys.Back:
+
+                                break;
+                            case Keys.Space:
+                                Text += " ";
+                                break;
+                        }
                     }
                     changed = true;
                 }
@@ -89,7 +111,7 @@ namespace Monocle.UI
         public override void Render()
         {
             base.Render();
-            Draw.Rect(Position, Width, Height, new Color(240, 240, 240));
+            Draw.Rect(Position, Width, Height, Color.White);
             if (Selected)
             {
                 Draw.HollowRect(Position, Width, Height, Color.DarkBlue);
