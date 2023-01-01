@@ -13,7 +13,7 @@ namespace Monocle.UI
 
     public class TextBox : Element
     {
-        public string Text { get; set; }
+        public StringBuilder Text;
         public bool Selected { get; set; }
 
         public int TextPadding = 6;
@@ -27,7 +27,7 @@ namespace Monocle.UI
 
         public TextBox(string text = "") : base()
         {
-            Text = text;
+            Text = new StringBuilder(text);
             Boxes.Add(this);
             OnClick += () =>
             {
@@ -60,15 +60,15 @@ namespace Monocle.UI
                             if (MInput.Keyboard.Check(Keys.LeftControl))
                             {
                                 int currentIndex = Text.Length - 1;
-                                while (currentIndex > 0 && Text[currentIndex] != ' ')
+                                while (currentIndex > 0 && Text[currentIndex] != ' ' && Text[currentIndex] != '\n')
                                 {
                                     currentIndex--;
                                 }
-                                Text = Text.Substring(0, currentIndex);
+                                Text = Text.Remove(currentIndex, Text.Length - currentIndex);
                             }
                             else
                             {
-                                Text = Text.Substring(0, Text.Length - 1);
+                                Text = Text.Remove(Text.Length - 1, 1);
                             }
                         }
                     }
@@ -81,16 +81,19 @@ namespace Monocle.UI
                                 if (key.ToString().Length == 1)
                                 {
                                     if (MInput.Keyboard.Check(Keys.LeftShift) || MInput.Keyboard.Check(Keys.RightShift))
-                                        Text += key.ToString();
+                                        Text.Append(key.ToString());
                                     else
-                                        Text += key.ToString().ToLower();
+                                        Text.Append(key.ToString().ToLower());
                                 }
                                 break;
                             case Keys.Back:
 
                                 break;
                             case Keys.Space:
-                                Text += " ";
+                                Text.Append(" ");
+                                break;
+                            case Keys.Enter:
+                                Text.Append("\n");
                                 break;
                         }
                     }
@@ -123,9 +126,10 @@ namespace Monocle.UI
             }
             Vector2 textPos = Position + new Vector2(TextPadding, Height / 2);
             Vector2 justify = new Vector2(0, 0.5f);
-            Draw.TextJustify(Manager.DefaultFont, Text, textPos, justify, Color.Black);
+            string text = Text.ToString();
+            Draw.TextJustify(Manager.DefaultFont, text, textPos, justify, Color.Black);
 
-            float width = Manager.DefaultFont.MeasureString(Text).X + TextPadding + 1;
+            float width = Manager.DefaultFont.MeasureString(text).X + TextPadding + 1;
             if (Selected)
             {
                 Draw.Line(Position + new Vector2(width, 4), Position + new Vector2(width, Height - 4), Color.Black);

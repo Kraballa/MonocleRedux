@@ -370,7 +370,7 @@ namespace Monocle
 #endif
         }
 
-        private void UpdateView()
+        protected void UpdateView()
         {
             float screenWidth = GraphicsDevice.PresentationParameters.BackBufferWidth;
             float screenHeight = GraphicsDevice.PresentationParameters.BackBufferHeight;
