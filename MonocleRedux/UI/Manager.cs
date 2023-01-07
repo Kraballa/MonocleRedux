@@ -12,7 +12,7 @@ namespace Monocle.UI
     public class Manager : Entity
     {
         public static BitmapFont DefaultFont;
-        public static VirtualButton Mouse;
+        public static VirtualButton? Mouse;
         public static Manager Instance;
 
         public int Depth => UIStack.Count;

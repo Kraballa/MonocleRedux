@@ -36,7 +36,7 @@ namespace Monocle.UI
 
         public virtual void Update()
         {
-            if (Hovered() && Manager.Mouse.Pressed)
+            if (Hovered() && Manager.Mouse != null && Manager.Mouse.Pressed)
             {
                 OnClick?.Invoke();
             }
