@@ -21,8 +21,8 @@ namespace Monocle
         public static Action OverloadGameLoop;
 
         // screen size
-        public static int Width { get; private set; }
-        public static int Height { get; private set; }
+        public static int Width { get; protected set; }
+        public static int Height { get; protected set; }
         public static int ViewWidth { get; protected set; }
         public static int ViewHeight { get; protected set; }
         public static int ViewPadding

@@ -14,6 +14,11 @@ namespace Monocle.UI
     {
         public string Text { get; set; }
 
+        public Label() : this("")
+        {
+
+        }
+
         public Label(string text)
         {
             Text = text;

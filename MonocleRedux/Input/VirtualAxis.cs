@@ -245,5 +245,16 @@ namespace Monocle
                 get { return value; }
             }
         }
+
+        public class MouseWheel : Node
+        {
+            public override float Value
+            {
+                get
+                {
+                    return MInput.Mouse.WheelDelta;
+                }
+            }
+        }
     }
 }

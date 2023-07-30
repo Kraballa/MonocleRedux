@@ -1,4 +1,5 @@
 ﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Monocle.UI
         public Vector2 Position { get; set; }
         public float Width { get; set; }
         public float Height { get; set; }
+        public Keys Shortcut { get; set; }
 
         public Vector2 Center => Position + new Vector2(Width / 2, Height / 2);
 
@@ -36,7 +38,7 @@ namespace Monocle.UI
 
         public virtual void Update()
         {
-            if (Hovered() && Manager.Mouse != null && Manager.Mouse.Pressed)
+            if (Hovered() && Manager.Mouse != null && Manager.Mouse.Pressed || MInput.Keyboard.Pressed(Shortcut))
             {
                 OnClick?.Invoke();
             }

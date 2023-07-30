@@ -41,6 +41,11 @@ namespace Monocle.UI
         public float InnerHeight => Height - Border * 2;
         public WindowAlignment Alignment = WindowAlignment.None;
 
+        public Window()
+        {
+
+        }
+
         public Window(Panel panel)
         {
             Panel = panel;
@@ -58,6 +63,14 @@ namespace Monocle.UI
         public virtual void Update()
         {
             Panel.Update();
+            if (Manager.Mouse != null && Manager.Mouse.Pressed)
+            {
+                if (Position.X < MInput.Mouse.X && Position.X + Width > MInput.Mouse.X
+                    && Position.Y < MInput.Mouse.Y && Position.Y + Height > MInput.Mouse.Y)
+                {
+                    Manager.Mouse.ConsumePress();
+                }
+            }
         }
 
         public virtual void Render(bool active = true)

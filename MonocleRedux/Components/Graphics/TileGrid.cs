@@ -16,7 +16,7 @@ namespace Monocle
         public Camera ClipCamera;
         public float Alpha = 1f;
 
-        public TileGrid(int tileWidth, int tileHeight, int tilesX, int tilesY) 
+        public TileGrid(int tileWidth, int tileHeight, int tilesX, int tilesY)
             : base(false, true)
         {
             TileWidth = tileWidth;
@@ -145,7 +145,7 @@ namespace Monocle
             int left, top, right, bottom;
             if (ClipCamera == null)
             {
-                throw new Exception("NULL CLIP: " + Entity.GetType().ToString());
+                //throw new Exception("NULL CLIP: " + Entity.GetType().ToString());
                 left = -VisualExtend;
                 top = -VisualExtend;
                 right = TilesX + VisualExtend;

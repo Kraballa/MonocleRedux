@@ -18,6 +18,15 @@ namespace Monocle
             return new MTexture(texture);
         }
 
+        static public MTexture FromFile(GraphicsDevice gd, params string[] path)
+        {
+            var fileStream = new FileStream(Path.Join(path), FileMode.Open, FileAccess.Read);
+            var texture = Texture2D.FromStream(gd, fileStream);
+            fileStream.Close();
+
+            return new MTexture(texture);
+        }
+
         public MTexture() { }
 
         public MTexture(Texture2D texture)

@@ -23,7 +23,7 @@ namespace Monocle.UI
 
             if (Hovered())
             {
-                if (Manager.Mouse.Check)
+                if (Manager.Mouse != null && Manager.Mouse.Check)
                 {
                     bg = Color.LightBlue;
                     border = Color.CadetBlue;

@@ -17,9 +17,9 @@ namespace Monocle
         private const float onesixth = 0.166666667f;
         private static int[] T = { 0x15, 0x38, 0x32, 0x2c, 0x0d, 0x13, 0x07, 0x2a };
 
-        private float u, v, w, s;
-        private int i, j, k;
-        private int[] A = { 0, 0, 0 };
+        private static float u, v, w, s;
+        private static int i, j, k;
+        private static int[] A = { 0, 0, 0 };
 
         public SimplexNoise()
         {
@@ -41,7 +41,7 @@ namespace Monocle
             {
                 for (int yy = 0; yy < height; yy++)
                 {
-                    map[xx, yy] = noise.Noise(xx * x, yy * y, zOffset);
+                    map[xx, yy] = Noise(xx * x, yy * y, zOffset);
                     if (map[xx, yy] > max)
                         max = map[xx, yy];
                     if (map[xx, yy] < min)
@@ -64,7 +64,7 @@ namespace Monocle
             return map;
         }
 
-        public float Noise(float x, float y, float z)
+        public static float Noise(float x, float y, float z)
         {
 
             // Skew input space to relative coordinate in simplex cell
@@ -91,12 +91,12 @@ namespace Monocle
             return K(hi) + K(3 - hi - lo) + K(lo) + K(0);
         }
 
-        private int fastfloor(float n)
+        private static int fastfloor(float n)
         {
             return n > 0 ? (int)n : (int)n - 1;
         }
 
-        private float K(int a)
+        private static float K(int a)
         {
             s = (A[0] + A[1] + A[2]) * onesixth;
             float x = u - A[0] + s;
@@ -121,18 +121,18 @@ namespace Monocle
             return 8 * t * t * (p + (b == 0 ? q + r : b2 == 0 ? q : r));
         }
 
-        private int shuffle(int i, int j, int k)
+        private static int shuffle(int i, int j, int k)
         {
             return b(i, j, k, 0) + b(j, k, i, 1) + b(k, i, j, 2) + b(i, j, k, 3) +
                    b(j, k, i, 4) + b(k, i, j, 5) + b(i, j, k, 6) + b(j, k, i, 7);
         }
 
-        private int b(int i, int j, int k, int B)
+        private static int b(int i, int j, int k, int B)
         {
             return T[b(i, B) << 2 | b(j, B) << 1 | b(k, B)];
         }
 
-        private int b(int N, int B)
+        private static int b(int N, int B)
         {
             return N >> B & 1;
         }

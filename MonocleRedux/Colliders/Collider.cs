@@ -37,7 +37,7 @@ namespace Monocle
             return Collide(component.Collider);
         }
 
-        public bool Collide(Collider collider)
+        public virtual bool Collide(Collider collider)
         {
             if (collider is Hitbox)
             {
